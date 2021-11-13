@@ -2,9 +2,13 @@
   <div id="app">
     <h1>To-Do List</h1>
     <to-do-form @todo-added="addToDo"></to-do-form>
+    <h2 id="list-summary">{{listSummary}}</h2>
     <ul aria-labelledby="list-summary" class ="stack-large">
       <li v-for="item in ToDoItems" :key="item.id">
-        <to-do-item :label="item.label" :done="item.done"></to-do-item>
+       <to-do-item :label="item.label" :done="item.done" :id="item.id"
+            @checkbox-changed="updateDoneStatus(item.id)">
+       </to-do-item>
+
       </li>
     </ul>
   </div>
@@ -19,12 +23,13 @@ export default {
   name: 'app',
   components: {
     ToDoItem,
-    ToDoForm
+    ToDoForm,
   },
+
   data(){
     return {
       ToDoItems:[
-        { id: uniqueId('todo-'), label: 'Learn Vue', done: true },
+        { id: uniqueId('todo-'), label: 'Learn Vue', done: false },
         { id: uniqueId('todo-'), label: 'Create a Vue project with the CLI', done: true },
         { id: uniqueId('todo-'), label: 'Have fun', done: true },
         { id: uniqueId('todo-'), label: 'Create a to-do list', done: false },
@@ -32,11 +37,25 @@ export default {
       ]
     }
   },
+
   methods: {
     addToDo(toDoLabel){
       this.ToDoItems.push({id:uniqueId('todo-'), label: toDoLabel, done: false});
-    }
-  }
+    },
+    updateDoneStatus(toDoId) {
+      const toDoToUpdate = this.ToDoItems.find(item => item.id === toDoId)
+      toDoToUpdate.done = !toDoToUpdate.done
+    } 
+
+  },
+
+  computed: {
+  listSummary() {
+    const numberFinishedItems = this.ToDoItems.filter(item =>item.done).length
+    return `${numberFinishedItems} out of ${this.ToDoItems.length} items completed`
+  },
+}
+
 };
 </script>
 
