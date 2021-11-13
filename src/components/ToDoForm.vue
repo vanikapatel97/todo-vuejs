@@ -24,6 +24,7 @@
                  return;
              }
              this.$emit('todo-added', this.label);
+             this.label = "";
           }
       },
       data() {
