@@ -1,24 +1,16 @@
-# todo-vuejs
+# ToDo Application  
+ToDo application built using VueJS
 
-## Project setup
+## Clone the repo
 ```
-npm install
+$ git clone https://github.com/vanikapatel97/todo-vuejs
 ```
 
-### Compiles and hot-reloads for development
+## Install the dependencies
+```
+$ npm install
+```
+
+## Start the application
 ```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
