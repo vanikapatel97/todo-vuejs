@@ -1,5 +1,7 @@
 # ToDo Application  
-ToDo application built using VueJS
+ToDo application built using VueJS.
+
+A live preview can be found [here](https://vanikapatel97.github.io/todo-vuejs/).
 
 ## Clone the repo
 ```
